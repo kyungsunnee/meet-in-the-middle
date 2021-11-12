@@ -1,8 +1,17 @@
 import React from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom'
 
-function Map () {
+function Login () {
 
+
+	return(
+		<div>
+			<h1>로그인</h1>
+			<input></input>
+			<input></input>
+			<Link to='MapPage'></Link>
+		</div>
+	)
 }
 
-export default Map
+export default Login

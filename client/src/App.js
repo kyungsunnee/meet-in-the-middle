@@ -1,6 +1,6 @@
 import React from 'react';
-import Landing from './pages/Landing';
-import Map from './pages/Map';
+import Login from './pages/Login';
+import MapPage from './pages/MapPage';
 import axios from 'axios';
 import './App.css';
 
@@ -12,10 +12,10 @@ export default function App () {
     <div>
       <Switch>
         <Route path='/'>
-          <Landing/>
+          <Login/>
         </Route>
         <Route exact path='/map'>
-          <Map />
+          <MapPage />
         </Route>
       </Switch>
     </div>

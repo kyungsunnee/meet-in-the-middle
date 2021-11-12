@@ -44,5 +44,3 @@ export default function MapPage({ logo }) {
     </div>
   );
 }
-
-/*global kakao*/

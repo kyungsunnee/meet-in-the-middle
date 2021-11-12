@@ -23,7 +23,7 @@ body {
   border: 1em solid rgb(215, 221, 233);
 }
 
-/* logo page */
+/* logo page /
 
 .inner-container {
   border: 1px dotted red;
@@ -64,7 +64,7 @@ body {
   width: 50%;
 }
 
-/* main page*/
+/ main page/
 
 .main {
   margin: auto;
@@ -74,9 +74,9 @@ body {
   border: 1px dotted red;
 }
 
-.inner {
+/ .inner {
   margin: auto;
   width: 95vw;
   border: 1px dotted rgb(67, 80, 139);
-}
-/* modal */
+} /
+/ modal */

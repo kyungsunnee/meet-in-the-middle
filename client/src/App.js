@@ -1,23 +1,18 @@
-import React from 'react';
-import Login from './pages/Login';
-import MapPage from './pages/MapPage';
-import axios from 'axios';
-import './App.css';
+import React, { useState } from "react";
+import Login from "./pages/Login";
+import MapPage from "./pages/MapPage";
+import { Route, Routes } from "react-router-dom";
+//! import axios from "axios";
+import "./App.css";
+import logo from "./logo-1.svg";
 
-export default function App () {
-
-
-
+export default function App() {
   return (
     <div>
-      <Switch>
-        <Route path='/'>
-          <Login/>
-        </Route>
-        <Route exact path='/map'>
-          <MapPage />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Login logo={logo} />} />
+        <Route exact path="/map" element={<MapPage logo={logo} />} />
+      </Routes>
     </div>
   );
 }

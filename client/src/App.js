@@ -1,7 +1,7 @@
 import React from 'react';
+import { Routes, Route} from 'react-router-dom';
 import Login from './pages/Login';
 import MapPage from './pages/MapPage';
-import axios from 'axios';
 import './App.css';
 
 export default function App () {
@@ -10,14 +10,10 @@ export default function App () {
 
   return (
     <div>
-      <Switch>
-        <Route path='/'>
-          <Login/>
-        </Route>
-        <Route exact path='/map'>
-          <MapPage />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route exact path='/' element={<Login />} />
+        <Route path='/map' element={<MapPage />} />
+      </Routes>
     </div>
   );
 }

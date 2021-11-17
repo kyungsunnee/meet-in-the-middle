@@ -1,30 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
-import Modal from "./Modal";
+import SignUpModal from "./SignUpModal";
+import FindInfo from "./FindInfo";
 //! import axios from "axios";
 
 export default function Login({ logo }) {
   const modal = document.getElementsByClassName("modal");
   const signBtn = document.getElementById("sign-btn");
+  const findBtn = document.getElementById("find-btn");
+  // 모달 관련 useState
   const [isOpen, setOpen] = useState(false);
+  const [isOpenFind, setOpenFind] = useState(false);
 
-  //! handleClickOutside Advanced
-
-  const handleModalOpen = () => {
+  const signUpModalOpen = () => {
     setOpen(true);
-    console.log(isOpen);
   };
 
-  const handleModalOff = () => {
+  const findModalOpen = () => {
+    setOpenFind(true);
+    console.log(isOpenFind);
+  };
+
+  const ModalOff = () => {
     setOpen(false);
+    setOpenFind(false);
   };
 
-  window.onclick = function (event) {
-    console.log(event.target, modal[0]);
-    if (event.target !== modal[0] && isOpen && event.target !== signBtn) {
-      console.log("여기들어와서");
-      handleModalOff();
-    }
-  };
+  // window.onclick = function (event) {
+  //   if (event.target !== modal[0] && isOpen && event.target !== signBtn) {
+  //     ModalOff();
+  //   }
+  // };
 
   return (
     <div>
@@ -32,20 +37,19 @@ export default function Login({ logo }) {
         {/* <form> */}
         <body className="inner-container">
           <section className="identity">
-            <h1>로고 및 소개 영역</h1>
+            {/* <h1>로고 및 소개 영역</h1> */}
             <div className="intro-area">
-              <img src={logo} alt="logo" id="logo-login" />
-              <div>우리 가운데서 만나요!</div>
+              <div className="container">
+                <img src={logo} alt="logo" id="logo-login" />
+                <div>우리 가운데서 만나요!</div>
+              </div>
             </div>
           </section>
           <section className="inputArea">
-            <h1>입력 영역</h1>
+            {/* <h1>입력 영역</h1> */}
             <div id="input-container">
-              <input
-                className="page1"
-                type="text"
-                placeholder="Email address"
-              />
+              <h3 className="project-name">Meet in the middle</h3>
+              <input className="page1" type="text" placeholder="Email" />
               <input
                 className="page1"
                 type="password"
@@ -55,16 +59,23 @@ export default function Login({ logo }) {
               <button
                 className="page1 button"
                 id="sign-btn"
-                onClick={handleModalOpen}
+                onClick={signUpModalOpen}
               >
                 SIGN UP
               </button>
-              <div className="page1 button">아이디 / 비밀번호 찾기</div>
+              <div
+                className="page1 button"
+                id="find-Btn"
+                onClick={findModalOpen}
+              >
+                아이디 / 비밀번호 찾기
+              </div>
             </div>
           </section>
         </body>
         {/* </form> */}
-        {isOpen ? <Modal handleModalOff={handleModalOff} /> : null}
+        {isOpen ? <SignUpModal signUpModalOff={ModalOff} /> : null}
+        {isOpenFind ? <FindInfo findModalOff={ModalOff} /> : null}
       </center>
     </div>
   );

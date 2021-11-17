@@ -6,27 +6,68 @@ body {
   display: flex;
 }
 
+.profileImg {
+  width: 3em;
+  height: 3em;
+  border-radius: 3em;
+}
+
+span {
+  width: 8em;
+}
+
 .button {
+  cursor: pointer;
+  display: block;
+  border: white;
+}
+
+button:hover {
+  background-color: rgb(137, 178, 206);
+  color: white;
   cursor: pointer;
 }
 
+input {
+  border: none;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  -webkit-appearance: none;
+}
+
 .modal {
+  z-index: 1050;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   max-height: 80%;
   width: 20rem;
-  height: 40%;
+  height: 50%;
   padding: 16px;
   background: white;
-  border: 1em solid rgb(215, 221, 233);
+  border: 1px solid rgb(215, 221, 233);
+  box-shadow: 0 0 100vw #dbdbdb;
 }
 
-/* logo page /
+/* logo page */
+
+.project-name {
+  margin: none;
+}
+
+.page1 {
+  text-align: center;
+  margin-top: 5%;
+  width: 70%;
+  height: 13%;
+}
+
+#forget {
+  font-size: 0.8em;
+}
 
 .inner-container {
-  border: 1px dotted red;
+  /* border: 1px dotted red; */
   margin: auto;
   width: 100vw;
   height: 100vh;
@@ -34,29 +75,37 @@ body {
 
 .identity {
   width: 50%;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .inputArea {
   width: 50%;
   align-items: center;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 #input-container {
+  border-radius: 2px;
   margin: auto;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 450px;
   position: center;
-  border: 1px solid coral;
+  border: 1px solid rgb(107, 107, 107);
+  margin-top: 20%;
+  margin-left: 10%;
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
 
 .intro-area {
   margin: auto;
-  width: 300px;
-  height: 300px;
+  margin-right: 15%;
+  width: 400px;
+  height: 400px;
   position: center;
-  border: 1px solid coral;
+  border: 1px solid rgb(255, 255, 255);
+  margin-top: 20%;
 }
 
 #logo-login {
@@ -64,19 +113,58 @@ body {
   width: 50%;
 }
 
-/ main page/
+.container {
+  margin-top: 22%;
+}
+
+/* map page */
 
 .main {
   margin: auto;
   width: 95vw;
-  height: 40px;
+  height: 3em;
   align-items: center;
   border: 1px dotted red;
 }
-
-/ .inner {
+.inner {
   margin: auto;
+
   width: 95vw;
   border: 1px dotted rgb(67, 80, 139);
-} /
-/ modal */
+}
+
+.top {
+  position: relative;
+  display: flex;
+  margin: auto;
+}
+
+.side {
+  width: 25vw;
+}
+
+#top-bar {
+  width: 95vw;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+}
+
+#myProfileBtn {
+  width: 2.8em;
+  height: 2.8em;
+  text-align: center;
+  background-color: azure;
+  border-radius: 3em;
+}
+
+#myProfilelogo {
+  width: 2.8em;
+  height: 2.8em;
+}
+
+#map {
+  width: 70vw;
+  height: 85vh;
+}
+/* modal */

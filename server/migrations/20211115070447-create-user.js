@@ -26,14 +26,13 @@ module.exports = {
       },
       birth: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       phone: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       image: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {

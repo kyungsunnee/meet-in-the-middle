@@ -4,7 +4,7 @@ const { sign, verify } = require('jsonwebtoken');
 module.exports = {
   generateAccessToken: (data) => {
     // accessToken 발급
-    return sign(data, process.env.ACCESS_SECRET, {expiresIn: '1h'});
+    return sign(data, process.env.ACCESS_SECRET, {expiresIn: '30m'});
   },
 
   // generateRefreshToken: (data) => {
@@ -13,7 +13,7 @@ module.exports = {
   // },
 
   sendAccessToken: (res, accessToken) => {
-    res.cookie('loginToken', accessToken, {httpOnly: true});
+    res.cookie('jwt', accessToken, {httpOnly: true});
   },
 
   // resendAccessToken: (res, accessToken) => {
@@ -26,7 +26,7 @@ module.exports = {
 
   isAuthorized: (req) => {
     // JWT토큰 정보를 받아서 검증
-    const authorization = req.cookie['loginToken'];
+    const authorization = req.cookies['jwt'];
 
     if(!authorization) {
       return null;

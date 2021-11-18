@@ -1,6 +1,7 @@
 const { user } = require('../../models');
 
-module.exports = async (res, req) => {
+module.exports = async (req, res) => {
+  console.log(req.body);
   const {email, userName, birth, phone} = req.body;
   const deleteUser = await user.findOne({where: req.body});
 

@@ -4,19 +4,21 @@ import React, { useState } from "react";
 export default function PlusFriend({ plusBtnOff, friendList, setfriendList }) {
   return (
     <div className="modal">
+      <div className="close-btn" onClick={plusBtnOff}>
+        X
+      </div>
       <form onSubmit={(e) => e.preventDefault()}>
         <fieldset>
-          <span>이름</span>
-          <input type="text"></input>
+          <input className="modal-list" type="text" placeholder="Name"></input>
         </fieldset>
         <fieldset>
-          <span>전화번호</span>
-          <input type="number"></input>
+          <input
+            className="modal-list"
+            type="number"
+            placeholder="Phone"
+          ></input>
         </fieldset>
-        <div className="button">추가</div>
-        <div className="button" onClick={plusBtnOff}>
-          닫기
-        </div>
+        <button className="modal-btn">친구 추가</button>
       </form>
     </div>
   );

@@ -4,17 +4,16 @@ import React from "react";
 export default function FindInfo({ findModalOff }) {
   return (
     <div className="modal">
-      <fieldset>
-        <span>이름</span>
-        <input type="text"></input>
-      </fieldset>
-      <fieldset>
-        <span>전화번호</span>
-        <input type="number"></input>
-      </fieldset>
-      <div className="button" onClick={findModalOff}>
-        닫기
+      <div className="close-btn" onClick={findModalOff}>
+        X
       </div>
+      <fieldset>
+        <input className="modal-list" type="text" placeholder="Name"></input>
+      </fieldset>
+      <fieldset>
+        <input className="modal-list" type="number" placeholder="Phone"></input>
+      </fieldset>
+      <button className="modal-btn">아이디 / 비밀번호 찾기</button>
     </div>
   );
 }

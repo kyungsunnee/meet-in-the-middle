@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser'); // 쿠키정보에 접근가능
 const express = require('express'); // express 사용
 const app = express();
 
-//const controllers = require('./controllers');
+const controllers = require('./controllers');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // 주소형식으로 들어온 요청 파싱 옵션 지정
@@ -14,14 +14,19 @@ app.use(
   cors({
     origin: ['https://localhost:3000'],
     credentials: true,
-    methods: ['GET', 'POST', 'OPTIONS']
+    methods: ['GET', 'POST', 'OPTIONS', 'PUT']
   })
 );
 
-
+// 라우터가 제대로 지정되어있어야 함 - 404에러의 주범;
 app.use(cookieParser());
-//app.get()
-//app.post('/signup', controllers.signup);
+app.get('/auth', controllers.auth);
+app.post('/signup', controllers.signup);
+app.post('/signin', controllers.signin);
+app.post('/signout', controllers.signout);
+app.post('/findlongininfo', controllers.findlogininfo);
+app.post('/signwithdrawal', controllers.signwithdrawal);
+app.post('/userinfo', controllers.userinfo);
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 

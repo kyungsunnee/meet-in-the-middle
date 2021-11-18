@@ -6,10 +6,12 @@ import KakaoMapCurrent from "./test";
 import userInfo from "../dummy";
 import ListUpMapDiv from "./ListUpMapDiv";
 const { kakao } = window;
-//! import axios from "axios";
+//import axios from "axios";
+
+//axios.defaults.withCredentials = true;
 
 export default function MapPage({ logo }) {
-  // console.log(userInfo);
+  //console.log(props);
   let curDeg = [37.365264512305174, 127.10676860117488];
   const [curAdd, setCurAdd] = useState("");
   const [isOpenMyProfile, setOpenMyProfile] = useState(false);

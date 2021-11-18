@@ -1,9 +1,10 @@
 const { user } = require('../../models');
 
 module.exports = async (req, res) => {
-  const userId = req.params.id;
+  //console.log(req.body.id, 'dd');
   const {nickName, password, phone} = req.body;
-  const changeUser = await user.findOne({where: userId});
+  const changeUser = await user.findOne({where: req.body.id});
+  //console.log(changeUser);
 
   if(!changeUser) {
     res.status(404).send('not found');

@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import SignUpModal from "./SignUpModal";
 import FindInfo from "./FindInfo";
-//! import axios from "axios";
+import axios from "axios";
 
-export default function Login({ logo }) {
+axios.defaults.withCredentials = true;
+
+export default function Login({ logo, loginSuccess }) {
   const modal = document.getElementsByClassName("modal");
   const signBtn = document.getElementById("sign-btn");
   const findBtn = document.getElementById("find-btn");
@@ -25,6 +27,32 @@ export default function Login({ logo }) {
     setOpenFind(false);
   };
 
+  // 로그인 통신
+  const [logininfo, setlogininfo] = useState({
+    email: '',
+    password: ''
+  });
+
+  const inputValue = (key) => (e) => {
+    setlogininfo({...logininfo, [key]: e.target.value});
+  };
+
+  const handleSignin = () => {
+    const login = {email: logininfo.email, password: logininfo.password};
+    //console.log(login);
+
+    if(!login.email || !login.password) {
+      alert('이메일과 비밀번호를 입력하세요');
+    }
+    axios.post('https://localhost:4000/signin', login,
+      {headers: {'Content-Type': 'application/json'}, withCredentials: true}
+    )
+    .then((res) => {
+      //console.log(res);
+      loginSuccess(res);
+    })
+  };
+
   // window.onclick = function (event) {
   //   if (event.target !== modal[0] && isOpen && event.target !== signBtn) {
   //     ModalOff();
@@ -34,7 +62,7 @@ export default function Login({ logo }) {
   return (
     <div>
       <center>
-        {/* <form> */}
+        <form onSubmit={(e) => e.preventDefault()}>
         <body className="inner-container">
           <section className="identity">
             {/* <h1>로고 및 소개 영역</h1> */}
@@ -49,13 +77,14 @@ export default function Login({ logo }) {
             {/* <h1>입력 영역</h1> */}
             <div id="input-container">
               <h3 className="project-name">Meet in the middle</h3>
-              <input className="page1" type="text" placeholder="Email" />
+              <input className="page1" type="text" placeholder="Email" onChange={inputValue('email')}/>
               <input
                 className="page1"
                 type="password"
                 placeholder="password"
+                onChange={inputValue('password')}
               ></input>
-              <button className="page1 button">LOGIN</button>
+              <button className="page1 button" onClick={handleSignin}>LOGIN</button>
               <button
                 className="page1 button"
                 id="sign-btn"
@@ -73,7 +102,7 @@ export default function Login({ logo }) {
             </div>
           </section>
         </body>
-        {/* </form> */}
+        </form>
         {isOpen ? <SignUpModal signUpModalOff={ModalOff} /> : null}
         {isOpenFind ? <FindInfo findModalOff={ModalOff} /> : null}
       </center>

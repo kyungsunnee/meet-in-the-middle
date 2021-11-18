@@ -10,13 +10,8 @@ export default function MapDiv({ curAdd, myCurAdd, setMyCurAdd }) {
   const [inputAdd, setInputAdd] = useState([37.541, 126.986]);
   let add = curAdd ? curAdd : null;
 
-  //   const selectKeyWord = () => {
-  //     console.log("선택");
-  //   };
-
   useEffect(() => {
     let markers = [];
-    let infos = [];
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -24,6 +19,17 @@ export default function MapDiv({ curAdd, myCurAdd, setMyCurAdd }) {
         // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
       });
     }
+
+    var imageSrc =
+        "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd1f712bb-571c-4481-b014-9fefb0995da2%2Fstart.png?table=block&id=f06f9cb2-93ca-4300-8bf1-df74e97ba9f8&spaceId=34b2f1fd-9d82-4494-8402-1bb057b304db&width=2000&userId=b5cfa95d-0fdc-4653-8882-18e28aaae8e9&cache=v2", // 마커이미지의 주소입니다
+      imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+      imageOption = { offset: new kakao.maps.Point(27, 69) };
+
+    var markerImage = new kakao.maps.MarkerImage(
+      imageSrc,
+      imageSize,
+      imageOption
+    );
 
     // console.log(inputAdd);
     setMyCurAdd([inputAdd[0], inputAdd[1]]);
@@ -49,21 +55,15 @@ export default function MapDiv({ curAdd, myCurAdd, setMyCurAdd }) {
           var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
           setMyCurAdd([result[0].y, result[0].x]);
+          var markerPosition = new kakao.maps.LatLng(result[0].y, result[0].x);
 
           // 결과값으로 받은 위치를 마커로 표시합니다
           var marker = new kakao.maps.Marker({
             map: map,
-            position: coords,
+            position: markerPosition,
+            image: markerImage,
           });
           markers.push(marker);
-          // 인포윈도우로 장소에 대한 설명을 표시합니다
-          var infowindow = new kakao.maps.InfoWindow({
-            content: `<div style="width:150px;text-align:center;padding:6px 0;">${add}</div>`,
-          });
-          infos.push(infowindow);
-          infowindow.open(map, marker);
-
-          // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
           map.setCenter(coords);
         }
       });
@@ -74,38 +74,36 @@ export default function MapDiv({ curAdd, myCurAdd, setMyCurAdd }) {
 
         setMyCurAdd([lat, lon]);
 
-        const locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-          message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
+        var imageSrc =
+            "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd1f712bb-571c-4481-b014-9fefb0995da2%2Fstart.png?table=block&id=f06f9cb2-93ca-4300-8bf1-df74e97ba9f8&spaceId=34b2f1fd-9d82-4494-8402-1bb057b304db&width=2000&userId=b5cfa95d-0fdc-4653-8882-18e28aaae8e9&cache=v2", // 마커이미지의 주소입니다
+          imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+          imageOption = { offset: new kakao.maps.Point(27, 69) };
+
+        var markerImage = new kakao.maps.MarkerImage(
+            imageSrc,
+            imageSize,
+            imageOption
+          ),
+          markerPosition = new kakao.maps.LatLng(lat, lon);
+
+        var marker = new kakao.maps.Marker({
+          map: map,
+          position: markerPosition,
+          image: markerImage,
+        });
+        markers.push(marker);
+        const locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 
         // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition, message);
+        displayMarker(locPosition);
       });
 
       function displayMarker(locPosition, message) {
-        // 마커를 생성합니다
-        const marker = new kakao.maps.Marker({
-          map: map,
-          position: locPosition,
-        });
-        markers.push(marker);
-
-        const iwContent = message, // 인포윈도우에 표시할 내용
-          iwRemoveable = true;
-
-        // 인포윈도우를 생성합니다
-        const infowindow = new kakao.maps.InfoWindow({
-          content: iwContent,
-          removable: iwRemoveable,
-        });
-
-        infos.push(infowindow);
-        // 인포윈도우를 마커위에 표시합니다
-        infowindow.open(map, marker);
-
-        // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);
       }
     }
+
+    console.log(markers);
 
     // 지도에 마커를 표시합니다
     kakao.maps.event.addListener(map, "click", function (mouseEvent) {
@@ -115,21 +113,13 @@ export default function MapDiv({ curAdd, myCurAdd, setMyCurAdd }) {
       for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
       }
-      for (let j = 0; j < infos.length; j++) {
-        infos[j].setMap(null);
-      }
+
+      console.log(markers);
 
       var marker = new kakao.maps.Marker({
         position: latlng,
+        image: markerImage,
       });
-
-      const infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="padding:5px;">여기???????</div>',
-      });
-
-      infos.push(infowindow);
-      // 인포윈도우를 마커위에 표시합니다
-      infowindow.open(map, marker);
 
       markers.push(marker);
       // 마커 위치를 클릭한 위치로 옮깁니다

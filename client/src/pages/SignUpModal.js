@@ -43,42 +43,45 @@ export default function SignUpModal({ signUpModalOff }) {
     })
   };
   return (
-    <div className="modal" id="signUpModal">
-      <h3>회원가입</h3>
-      <fieldset>
-        <span>이메일</span>
-        <input type="email" onChange={inputValue('email')}/>
-      </fieldset>
-      <fieldset>
-        <span>비밀번호</span>
-        <input type="password" onChange={inputValue('password')}/>
-      </fieldset>
-      <fieldset>
-        <span>비밀번호 확인</span>
-        <input type="password" onChange={inputValue('passwordCheck')}/>
-      </fieldset>
-      <fieldset>
-        <span>이름</span>
-        <input type="text" onChange={inputValue('userName')}/>
-      </fieldset>
-      <fieldset>
-        <span>별명</span>
-        <input type="text" onChange={inputValue('nickName')}/>
-      </fieldset>
-      <fieldset>
-        <span>생년월일</span>
-        <input type="number" onChange={inputValue('birth')}/>
-      </fieldset>
-      <fieldset>
-        <span>휴대폰</span>
-        <input type="number" onChange={inputValue('phone')}/>
-      </fieldset>
-      <div className="button" onClick={handleSignup}>
-        회원가입
-      </div>
+    <div>
+      <div className="modal" id="signUpModal">
+        <div className="close-btn" onClick={signUpModalOff}>
+          x
+        </div>
+        <h3 className="singup-btn">SING UP</h3>
+        <fieldset>
+          <input className="modal-list" type="text" placeholder="Email" onChange={inputValue('email')}></input>
+        </fieldset>
+        <fieldset>
+          <input
+            className="modal-list"
+            type="password"
+            placeholder="password"
+            onChange={inputValue('password')}
+          ></input>
+        </fieldset>
+        <fieldset>
+          <input
+            className="modal-list"
+            type="password"
+            placeholder="password confirm"
+            onChange={inputValue('passwordCheck')}
+          ></input>
+        </fieldset>
+        <fieldset>
+          <input className="modal-list" type="text" placeholder="Name" onChange={inputValue('userName')}></input>
+        </fieldset>
+        <fieldset>
+          <input className="modal-list" type="text" placeholder="Nick name" onChange={inputValue('nickName')}></input>
+        </fieldset>
+        <fieldset>
+          <input className="modal-list" type="text" placeholder="Phone" onChange={inputValue('phone')}></input>
+        </fieldset>
+        <button className="modal-btn" onClick={handleSignup}>가입하기</button>
       <div className="button" onClick={signUpModalOff}>
         닫기
       </div>
+      <div className="blur"></div>
     </div>
   );
 }

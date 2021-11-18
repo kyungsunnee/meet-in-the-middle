@@ -69,22 +69,44 @@ export default function Login({ logo, loginSuccess }) {
             <div className="intro-area">
               <div className="container">
                 <img src={logo} alt="logo" id="logo-login" />
-                <div>우리 가운데서 만나요!</div>
+                <img
+                  className="introduction"
+                  src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa28ae486-c85a-4ee0-830a-0664a564da35%2Fintro1.png?table=block&id=d819f83b-cf9f-4c21-9de3-505e52b85e41&spaceId=34b2f1fd-9d82-4494-8402-1bb057b304db&width=2000&userId=b5cfa95d-0fdc-4653-8882-18e28aaae8e9&cache=v2"
+                  alt="intro"
+                />
               </div>
             </div>
           </section>
           <section className="inputArea">
             {/* <h1>입력 영역</h1> */}
-            <div id="input-container">
-              <h3 className="project-name">Meet in the middle</h3>
-              <input className="page1" type="text" placeholder="Email" onChange={inputValue('email')}/>
+            <div className="input-container">
+              <img
+                className="welcome"
+                src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd24a9efc-85b5-4fd9-bc10-b970598faaf7%2Fwelcome.png?table=block&id=55d6901b-6ddc-466a-acb2-0e482f6e9248&spaceId=34b2f1fd-9d82-4494-8402-1bb057b304db&width=2000&userId=b5cfa95d-0fdc-4653-8882-18e28aaae8e9&cache=v2"
+                alt="backImg"
+              ></img>
               <input
                 className="page1"
-                type="password"
-                placeholder="password"
+                type="text"
+                placeholder="Email"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder = 'email'"
+              />
+//               <input
+//                 className="page1"
+//                 type="password"
+//                 placeholder="password"
+//!
+//                 onChange={inputValue('password')}
+//               ></input>
+//               <button className="page1 button" onClick={handleSignin}>LOGIN</button>
+
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder = 'password'"
                 onChange={inputValue('password')}
-              ></input>
+              />
               <button className="page1 button" onClick={handleSignin}>LOGIN</button>
+
               <button
                 className="page1 button"
                 id="sign-btn"
@@ -92,11 +114,7 @@ export default function Login({ logo, loginSuccess }) {
               >
                 SIGN UP
               </button>
-              <div
-                className="page1 button"
-                id="find-Btn"
-                onClick={findModalOpen}
-              >
+              <div id="find-Btn" onClick={findModalOpen}>
                 아이디 / 비밀번호 찾기
               </div>
             </div>

@@ -6,7 +6,6 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import logo from "./logo-1.svg";
-
 export default function App() {
   const [islogin, setislogin] = useState(false);
   const [userinfo, setuserinfo] = useState(null);

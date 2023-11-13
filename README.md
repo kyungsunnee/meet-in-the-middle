@@ -1,5 +1,5 @@
 # meet-in-the-middle
-![IMG_0002 2 사본.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4cfdc859-56d5-4ad5-80fb-731299ac8c4e/IMG_0002_2_사본.jpg)
+https://file.notion.so/f/s/4cfdc859-56d5-4ad5-80fb-731299ac8c4e/IMG_0002_2_%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB.jpg?id=51396ee6-65db-4515-a4cb-f598b6ea3bde&table=block&spaceId=34b2f1fd-9d82-4494-8402-1bb057b304db&expirationTimestamp=1700006400000&signature=bjuySLaXdu-g2WjbX_3SWQzUzi-wyciTADp0L04BpeQ&downloadName=IMG_0002+2+%E1%84%89%E1%85%A1%E1%84%87%E1%85%A9%E1%86%AB.jpg
 
 ### 우리 어디서 만나?
 
